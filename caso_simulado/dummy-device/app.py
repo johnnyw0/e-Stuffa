@@ -57,7 +57,7 @@ def send_data(client):
     while True:
         if SEND.value:
             # Create random temperature and relative umidity values
-            temperature = round(random.uniform(10, 40), 2)
+            temperature = round(random.uniform(30, 40), 2)
             humidity = round(random.uniform(0, 100), 2)
 
             # Send random variables via MQTT

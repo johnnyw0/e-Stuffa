@@ -1,3 +1,12 @@
 docker exec -it  db-mysql mysql -h mysql-db -P 3306 -u root -p123
 
-trtrabalho123
+
+SELECT UNIX_TIMESTAMP(recvtime) as "time", CAST(attrValue as decimals(5,2)) as "value"
+FROM openiot.`urn_ngsi-ld_Device_001_Device`
+WHERE attrName="relativeHumidity"
+ORDER BY "time"
+
+SELECT UNIX_TIMESTAMP(recvtime) as "time", CAST(attrValue as decimals(5,2)) as "value"
+FROM openiot.`urn_ngsi-ld_Device_001_Device`
+WHERE attrName="temperature"
+ORDER BY "time"
