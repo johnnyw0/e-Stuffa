@@ -1,4 +1,4 @@
-version: "3.8" # Version for the docker compose
+version: "3.8" 
 services:
 
   # Orion context broker
@@ -48,22 +48,22 @@ services:
     expose:
       - "4042"
     ports:
-      - "4042:4042" # localhost:4042
+      - "4042:4042" 
     environment:
-      - IOTA_CB_HOST=orion # name of the context broker to update context
-      - IOTA_CB_PORT=1026 # port the context broker listens on to update context
+      - IOTA_CB_HOST=orion 
+      - IOTA_CB_PORT=1026 
       - IOTA_NORTH_PORT=4042
-      - IOTA_REGISTRY_TYPE=mongodb #Whether to hold IoT device info in memory or in a database
-      - IOTA_LOG_LEVEL=DEBUG # The log level of the IoT Agent
-      - IOTA_TIMESTAMP=true # Supply timestamp information with each measurement
-      - IOTA_CB_NGSI_VERSION=v2 # use NGSIv2 when sending updates for active attributes
-      - IOTA_AUTOCAST=true # Ensure Ultralight number values are read as numbers not strings
-      - IOTA_MONGO_HOST=mongo-db # The host name of MongoDB
-      - IOTA_MONGO_PORT=27017 # The port mongoDB is listening on
-      - IOTA_MONGO_DB=iotagentul # The name of the database used in mongoDB
-      - IOTA_MQTT_HOST=mosquitto # The host name of the MQTT Broker
-      - IOTA_MQTT_PORT=1883 # The port the MQTT Broker is listening on to receive topics
-      - IOTA_DEFAULT_RESOURCE= # Default is blank. I'm using MQTT so I don't need a resource
+      - IOTA_REGISTRY_TYPE=mongodb 
+      - IOTA_LOG_LEVEL=DEBUG 
+      - IOTA_TIMESTAMP=true 
+      - IOTA_CB_NGSI_VERSION=v2 
+      - IOTA_AUTOCAST=true 
+      - IOTA_MONGO_HOST=mongo-db 
+      - IOTA_MONGO_PORT=27017 
+      - IOTA_MONGO_DB=iotagentul 
+      - IOTA_MQTT_HOST=mosquitto 
+      - IOTA_MQTT_PORT=1883 
+      - IOTA_DEFAULT_RESOURCE= 
       - IOTA_PROVIDER_URL=http://iot-agent-ul:4042
       - IOTA_DEFAULT_TRANSPORT=MQTT
     healthcheck:
@@ -110,17 +110,17 @@ services:
       - "5050"
       - "5080"
     ports:
-      - "5050:5050" # localhost:5050
-      - "5080:5080" # localhost:5080
+      - "5050:5050" 
+      - "5080:5080" 
     environment:
-      - "CYGNUS_MYSQL_SERVICE_PORT=5050" # Notification Port that Cygnus listens when subcribing to context data changes
-      - "CYGNUS_MYSQL_HOST=mysql-db" # Hostname of the MySQL server used to persist historical context data
-      - "CYGNUS_MYSQL_PORT=3306" # Port that the MySQL server uses to listen to commands
-      - "CYGNUS_MYSQL_USER=root" # Username for the MySQL database user
-      - "CYGNUS_MYSQL_PASS=123" # Password for the MySQL database user
+      - "CYGNUS_MYSQL_SERVICE_PORT=5050" 
+      - "CYGNUS_MYSQL_HOST=mysql-db" 
+      - "CYGNUS_MYSQL_PORT=3306" 
+      - "CYGNUS_MYSQL_USER=root" 
+      - "CYGNUS_MYSQL_PASS=123" 
       - "CYGNUS_SERVICE_PORT=5050"
-      - "CYGNUS_API_PORT=5080" # Port that Cygnus listens on for operational reasons
-      - "CYGNUS_LOG_LEVEL=DEBUG" # The logging level for Cygnus
+      - "CYGNUS_API_PORT=5080" 
+      - "CYGNUS_LOG_LEVEL=DEBUG" 
     healthcheck:
       test: curl --fail -s http://localhost:5080/v1/version || exit 1
 
@@ -132,7 +132,7 @@ services:
     expose:
       - "3306"
     ports:
-      - "3306:3306" # localhost:3306
+      - "3306:3306"
     networks:
       - default
     environment:
@@ -153,6 +153,6 @@ services:
 networks:
   default:
   
-volumes: # Creates a volume to persit the data in the database
+volumes: 
   mongo-db: ~
   mysql-db: ~
