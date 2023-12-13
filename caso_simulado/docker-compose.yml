@@ -1,7 +1,7 @@
 version: "3.8" 
 services:
 
-  # Orion context broker
+
   orion:
     image: fiware/orion:3.7.0
     hostname: orion 
@@ -17,7 +17,7 @@ services:
       test: curl --fail -s http://orion:1026/version || exit 1
       interval: 10s
 
-  # Databases
+ 
   mongo-db:
     image: mongo:4.4 
     hostname: mongo-db 
