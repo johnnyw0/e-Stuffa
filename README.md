@@ -26,14 +26,3 @@ A arquitetura do projeto é composta pelos seguintes serviços:
 6.  **`mysql-db`**: Banco de dados MySQL, onde o Cygnus persistirá os dados históricos dos sensores.
 7.  **`cygnus`**: O Cygnus NGSI, que se inscreve nas atualizações de contexto do Orion e armazena esses dados no `mysql-db`.
 8.  **`grafana`**: A plataforma Grafana, que se conecta ao `mysql-db` para visualizar os dados históricos de temperatura e umidade em dashboards personalizáveis.
-
-```mermaid
-graph TD
-    A[Dummy Device (Python)] -- MQTT --> B(Mosquitto)
-    B -- MQTT --> C(IoT Agent UL)
-    C -- NGSI --> D(Orion Context Broker)
-    D -- Subscription --> E(Cygnus)
-    E -- Persist Data --> F(MySQL DB)
-    F -- Data Source --> G(Grafana)
-    D -- Internal Data --> H(MongoDB)
-    C -- Internal Data --> H
